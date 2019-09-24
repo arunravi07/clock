@@ -1,11 +1,11 @@
 body{margin: 0}
 *{box-sizing: border-box}
-#clock{width: 500px; height: 500px; border: 5px solid #000; margin:50px auto; border-radius: 50%; position: relative;} 
+#clock{width: 80vh; height: 80vh; border: 5px solid #000; margin:10vh auto; border-radius: 50%; position: relative;} 
 #clock .hourHand{ 
     width: 4px;
-    height: 200px;
-    border-bottom:100px solid transparent; 
-    border-top:100px solid #000; 
+    height: 32vh;
+    border-bottom:16vh solid transparent; 
+    border-top:16vh solid #000; 
     display: block;
     position: absolute;
     left: 50%;
@@ -15,26 +15,26 @@ body{margin: 0}
 }
 #clock .minHand{ 
     width: 4px; 
-    height: 300px; 
-    border-bottom:150px solid transparent; 
-    border-top:150px solid #000; 
+    height: 44vh; 
+    border-bottom:22vh solid transparent; 
+    border-top:22vh solid #000; 
     display: block; 
     position: absolute; 
     left:50%; 
     top: 50%; 
-    transform: translateX(-50%) translateY(-50%)  rotate(0deg);
+    transform: translateX(-50%) translateY(-50%);
     z-index: 3;
 }
 #clock .secHand{ 
     width: 4px;
-    height: 400px;
-    border-bottom:200px solid transparent; 
-    border-top:200px solid #000; 
+    height: 70vh;
+    border-bottom:35vh solid transparent; 
+    border-top:35vh solid #f00; 
     display: block;
     position: absolute;
     left:50%;
     top: 50%;
-    transform: translateX(-50%) translateY(-50%)  rotate(90deg);
+    transform: translateX(-50%) translateY(-50%);
     z-index: 4;
 }
 #clock .centerPoint {
