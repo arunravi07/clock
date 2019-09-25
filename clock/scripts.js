@@ -16,7 +16,6 @@
 //         rotateSecondHand(secHand,i)
 //     }, 60000);
 // }
-$(document).ready(function(){
     var clockFrame = $('#clock');
     var minHand= $('<span />',{ 'class' : 'minHand'});
     var secHand= $('<span />',{ 'class' : 'secHand'});
@@ -28,17 +27,15 @@ $(document).ready(function(){
     let minAngle = currentTime.getMinutes() * 6;
     let hourAngle = currentTime.getHours() * 30 + .5*minAngle/6;
     // let i = currentSec;
-    // secHand.css('transform','translateX(-50%) translateY(-50%)  rotate('+secAngle+'deg)');
-    // minHand.css('transform','translateX(-50%) translateY(-50%)  rotate('+minAngle+'deg)');
-    // hourHand.css('transform','translateX(-50%) translateY(-50%)  rotate('+hourAngle+'deg)');
+    secHand.css('transform','translateX(-50%) translateY(-50%)  rotate('+secAngle+'deg)');
+    minHand.css('transform','translateX(-50%) translateY(-50%)  rotate('+minAngle+'deg)');
+    hourHand.css('transform','translateX(-50%) translateY(-50%)  rotate('+hourAngle+'deg)');
     setInterval(()=>{ 
-        secHand.css('transform','translateX(-50%) translateY(-50%)  rotate('+secAngle+'deg)');
-        minHand.css('transform','translateX(-50%) translateY(-50%)  rotate('+(minAngle)+'deg)');
-        hourHand.css('transform','translateX(-50%) translateY(-50%)  rotate('+(hourAngle)+'deg)');
         secAngle+=6
         minAngle+=6/60;
         hourAngle+= .5/60
+        secHand.css('transform','translateX(-50%) translateY(-50%)  rotate('+secAngle+'deg)');
+        minHand.css('transform','translateX(-50%) translateY(-50%)  rotate('+(minAngle)+'deg)');
+        hourHand.css('transform','translateX(-50%) translateY(-50%)  rotate('+(hourAngle)+'deg)');
     } 
     , 1000);
-
-})
