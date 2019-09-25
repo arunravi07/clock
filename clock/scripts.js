@@ -1,41 +1,36 @@
-// rotateSecondHand = (secHand,seconds) => {
-//     let i = seconds;
-//     i>60 ? i = 0: i = i;
-//     secHand.css('transform','translateX(-50%) translateY(-50%)  rotate('+i*6+'deg)');
-//     i++;
-//     window.setTimeout(function(){
-//         rotateSecondHand(secHand,i)
-//     }, 1000);
-// }
-// rotateMinHand = (secHand,mins) => {
-//     let i = mins;
-//     i>60 ? i = 0: i = i;
-//     secHand.css('transform','translateX(-50%) translateY(-50%)  rotate('+i*6+'deg)');
-//     i++;
-//     window.setTimeout(function(){
-//         rotateSecondHand(secHand,i)
-//     }, 60000);
-// }
+'use strict';
+const clock = () =>{
     var clockFrame = $('#clock');
-    var minHand= $('<span />',{ 'class' : 'minHand'});
     var secHand= $('<span />',{ 'class' : 'secHand'});
+    var minHand= $('<span />',{ 'class' : 'minHand'});
     var hourHand= $('<span />',{ 'class' : 'hourHand'});
     var centerPoint= $('<span />',{ 'class' : 'centerPoint'});
-    clockFrame.append(minHand, secHand, hourHand, centerPoint);
+    clockFrame.append(secHand, minHand, hourHand, centerPoint);
     let currentTime= new Date();
-    let secAngle = currentTime.getSeconds() * 6;
-    let minAngle = currentTime.getMinutes() * 6;
-    let hourAngle = currentTime.getHours() * 30 + .5*minAngle/6;
+    let sec= currentTime.getSeconds()
+    let minute= currentTime.getMinutes()
+    let hour = currentTime.getHours() > 12 ? currentTime.getHours() - 12 : currentTime.getHours()
+    let secAngle = sec * 6;
+    let minAngle = (minute * 6) + (.1*sec);
+    let hourAngle = (hour * 30) + (minute * .5) + (.5*sec/60)
     // let i = currentSec;
     secHand.css('transform','translateX(-50%) translateY(-50%)  rotate('+secAngle+'deg)');
     minHand.css('transform','translateX(-50%) translateY(-50%)  rotate('+minAngle+'deg)');
     hourHand.css('transform','translateX(-50%) translateY(-50%)  rotate('+hourAngle+'deg)');
-    setInterval(()=>{ 
-        secAngle+=6
-        minAngle+=6/60;
-        hourAngle+= .5/60
-        secHand.css('transform','translateX(-50%) translateY(-50%)  rotate('+secAngle+'deg)');
-        minHand.css('transform','translateX(-50%) translateY(-50%)  rotate('+(minAngle)+'deg)');
-        hourHand.css('transform','translateX(-50%) translateY(-50%)  rotate('+(hourAngle)+'deg)');
-    } 
+    console.log(secAngle, minAngle, hourAngle)
+    setInterval(
+        ()=> { 
+            secAngle+= 6;
+                secAngle === 360 ? secAngle=0 : secAngle;
+            minAngle+= .1;
+                minAngle === 360 ? minAngle=0 : minAngle;
+            hourAngle+= .5/60;
+                hourAngle === 360 ? hourAngle=0 : hourAngle
+
+            secHand.css('transform','translateX(-50%) translateY(-50%)  rotate('+secAngle+'deg)');
+            minHand.css('transform','translateX(-50%) translateY(-50%)  rotate('+(minAngle)+'deg)');
+            hourHand.css('transform','translateX(-50%) translateY(-50%)  rotate('+(hourAngle)+'deg)');        
+        } 
     , 1000);
+}
+clock()
