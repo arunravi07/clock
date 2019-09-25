@@ -1,6 +1,6 @@
 body{margin: 0}
 *{box-sizing: border-box}
-#clock{width: 80vh; height: 80vh; border: 5px solid #000; margin:10vh auto; border-radius: 50%; position: relative;} 
+#clock{width: 80vh; height: 80vh; border: 5px solid #000; margin:10vh auto; border-radius: 50%; position: relative; background-color: #333;} 
 #clock .hourHand{ 
     width: 4px;
     height: 32vh;
@@ -49,4 +49,21 @@ body{margin: 0}
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
     z-index: 5;
+}
+.dialPointCont {
+	position: relative;
+	width: 100%;
+	top: 0;
+	left: 0;
+	height: 100%;
+    display: block;
+    border-radius: 50%
+}
+.dialPointCont span {
+    position: absolute;
+    width: 50px;
+    height: 20px;
+    left: 0%;
+    top: 50%;
+    background-color: #ddd
 }
